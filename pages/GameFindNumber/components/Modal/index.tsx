@@ -6,11 +6,17 @@ import Modal from 'react-native-modal';
 import styles from './styles';
 import colors from '../../contains/color';
 
-const ModalEndGame = () => {
+interface ModalEndGameProps {
+  score: number;
+  open: boolean;
+  handleClose: () => void;
+}
+
+const ModalEndGame = ({ score, open, handleClose }: ModalEndGameProps) => {
   return (
     <View style={styles.centeredView}>
       <Modal
-        isVisible={false}
+        isVisible={open}
         hasBackdrop
         backdropColor={colors.backdrop}
         backdropOpacity={0.7}
@@ -20,9 +26,9 @@ const ModalEndGame = () => {
             <Text style={styles.title}>Sorry, you failed</Text>
             <View style={styles.wrapScore}>
               <Text style={styles.titleScore}>Your Score:</Text>
-              <Text style={styles.score}>20</Text>
+              <Text style={styles.score}>{score}</Text>
             </View>
-            <TouchableOpacity style={styles.tryAgain}>
+            <TouchableOpacity style={styles.tryAgain} onPress={handleClose}>
             <FontAwesome name="recycle" size={40} color={colors.one} />
               <Text style={styles.text}>Try Again</Text>
             </TouchableOpacity>

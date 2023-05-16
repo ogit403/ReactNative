@@ -23,7 +23,13 @@ const style = StyleSheet.create({
         paddingHorizontal : 13,
         paddingVertical : 13,
         color : colors.background
-    }
+    },
+    active: {
+        backgroundColor: colors.background
+    },
+    activeText: {
+        color: colors.two
+    },
 });
 
 export default style;
