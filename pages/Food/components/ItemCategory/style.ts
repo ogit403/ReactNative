@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import { COLORS } from '../../contains';
 
-const height = Dimensions.get('window').height - 180;
+const height = Dimensions.get('window').height - 150;
 
 const styles = StyleSheet.create({
     item: {
@@ -27,10 +27,14 @@ const styles = StyleSheet.create({
     text: {
         color: COLORS.primary,
         fontWeight: '600',
+        textAlign: 'center',
     },
     wrapIcon: {
         flexDirection: 'row',
         marginTop: 10,
+    },
+    icon: {
+        marginHorizontal: 10,
     }
 });
 

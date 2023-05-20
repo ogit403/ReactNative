@@ -3,10 +3,20 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { Seen } from '../../screen';
 import { COLORS } from '../../contains';
+import { TrashAll } from '../../components';
+import useActionProduct from '../../hooks/useActionProduct';
+import { ProductType } from '../../interfaces';
 
-const Stack = createStackNavigator();
+export type RootStackParamListSeen = {
+  SeenScreen: undefined;
+  ProductScreen: { product: ProductType, name: string };
+};
+
+const Stack = createStackNavigator<RootStackParamListSeen>();
 
 const SeenNavigation = () => {
+  const { view } = useActionProduct('');
+
   return (
     <Stack.Navigator
         screenOptions={{
@@ -16,7 +26,7 @@ const SeenNavigation = () => {
             headerTintColor : COLORS.second
         }}
     >
-      <Stack.Screen name="SeenScreen" component={Seen} options={{ title: 'Món ăn đã xem' }} />
+      <Stack.Screen name="SeenScreen" component={Seen} options={{ title: 'Món ăn đã xem', headerRight: () => <TrashAll data={view} type="seen" /> }} />
     </Stack.Navigator>
   )
 }

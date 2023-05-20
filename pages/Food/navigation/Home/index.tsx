@@ -3,9 +3,15 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { Category, Home, Product } from '../../screen';
 import { COLORS } from '../../contains';
+import { ProductType } from '../../interfaces';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+    HomeScreen: undefined;
+    CategoryScreen: { id: string, name: string };
+    ProductScreen: { product: ProductType, name: string };
+};
 
+const Stack = createStackNavigator<RootStackParamList>();
 
 const HomeNavigation = () => {
   return (
@@ -17,9 +23,13 @@ const HomeNavigation = () => {
             headerTintColor : COLORS.second
         }}
     >
-      <Stack.Screen name="HomeScreen" component={Product} options={{ title: 'Món ăn ngon' }} />
-      <Stack.Screen name="CategoryScreen" component={Category} />
-      <Stack.Screen name="ProductScreen" component={Product} />
+      <Stack.Screen name="HomeScreen" component={Home} options={{ title: 'Món ăn ngon' }} />
+      <Stack.Screen name="CategoryScreen" component={Category} options={({ route }) => ({
+        title: route.params.name
+      })} />
+      <Stack.Screen name="ProductScreen" component={Product} options={({ route }) => ({
+        title: route.params.name
+      })} />
     </Stack.Navigator>
   )
 }

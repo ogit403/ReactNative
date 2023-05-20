@@ -46,8 +46,8 @@ const NavigationRoot = () => {
             })}
         >
             <Tab.Screen name="Home" component={HomeNavigation} options={{ title: 'Trang chủ' }} />
-            <Tab.Screen name="Favorite" component={FavoriteNavigation} options={{ title: 'Đã xem' }} />
-            <Tab.Screen name="Seen" component={SeenNavigation} options={{ title: 'Yêu thích' }} />
+            <Tab.Screen name="Seen" component={SeenNavigation} options={{ title: 'Đã xem' }} />
+            <Tab.Screen name="Favorite" component={FavoriteNavigation} options={{ title: 'Yêu thích' }} />
         </Tab.Navigator>
     </NavigationContainer>
   )

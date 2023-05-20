@@ -12,9 +12,11 @@ const styles = StyleSheet.create({
     },
     wrapImage: {
         width: '100%',
+        height: 142,
     },
     image: {
         width: '100%',
+        height: '100%',
         resizeMode: 'cover'
     },
     wrapIcon: {
